@@ -46,7 +46,18 @@ function App() {
 
   const handleCardClick = (card) => {
     // Can't click again if the card is already flipped
-    
+    if(card.isFlipped || card.isMatched){
+      return
+    }
+
+    // Update Card
+    const newCards = cards.map((c) => {
+      if(c.id === card.id) {
+        return{...c, isFlipped: true}
+      } else {
+        return c
+      }
+    } )
   }
   
   return (
