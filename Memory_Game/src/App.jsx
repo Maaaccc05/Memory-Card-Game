@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Card } from "../components/Card"
 import { GameHeader } from "../components/GameHeader"
 
@@ -43,6 +43,10 @@ function App() {
   useEffect(() => {
     initializeGame()
   }, [])
+
+  const handleCardClick = (card) => {
+    // Can't click again if the card is already flipped
+  }
   
   return (
   <div className="app">
@@ -52,7 +56,7 @@ function App() {
 
       <div className="cards-grid">
         {cards.map((card) => (
-          <Card card={card} />
+          <Card card={card} onClick={handleCardClick}/>
         ))}
       </div>
   </div>
