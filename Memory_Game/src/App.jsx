@@ -46,6 +46,7 @@ function App() {
 
   const handleCardClick = (card) => {
     // Can't click again if the card is already flipped
+    
   }
   
   return (
