@@ -24,6 +24,7 @@ const cardValues = [
 function App() {
 
   const [cards, setCards] = useState([])
+  const [flippedCards, setFlippedCards] = useState([])
 
   const initializeGame = () => {
     //Shuffle Cars
@@ -58,6 +59,12 @@ function App() {
         return c
       }
     } )
+
+    setCards(newCards)
+
+    const newFlippedCards = [...flippedCards, card.id]
+    setFlippedCards(newFlippedCards)
+    
   }
   
   return (
@@ -67,9 +74,9 @@ function App() {
       moves={9}/>
 
       <div className="cards-grid">
-        {cards.map((card) => (
-          <Card card={card} onClick={handleCardClick}/>
-        ))}
+        {cards.map((card, index) => 
+          <Card key={index} card={card} onClick={handleCardClick}/>
+        )}
       </div>
   </div>
   )
