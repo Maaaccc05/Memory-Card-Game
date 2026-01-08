@@ -64,7 +64,16 @@ function App() {
 
     const newFlippedCards = [...flippedCards, card.id]
     setFlippedCards(newFlippedCards)
-    
+
+    // Check for match if two cards are flipped
+
+    if (flippedCards.length === 1){
+      const firstCard = cards[flippedCards[0]]
+
+      if (firstCard.value === card.value) {
+        alert("Matched")
+      }
+    }
   }
   
   return (
