@@ -80,9 +80,11 @@ function App() {
               return c;
             }
           });
-        });
+          setCards(flippedBackCards); 
 
-        setCards(flippedBackCards);
+          setFlippedCards([])
+        }, 1000);
+
       }
     }
   };
