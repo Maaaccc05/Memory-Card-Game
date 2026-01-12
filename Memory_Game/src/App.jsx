@@ -24,6 +24,7 @@ const cardValues = [
 function App() {
   const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
+  const [matchedCards, setMatchedCards] = useState([]);
 
   const initializeGame = () => {
     //Shuffle Cars
@@ -68,7 +69,8 @@ function App() {
       const firstCard = cards[flippedCards[0]];
 
       if (firstCard.value === card.value) {
-        alert("Matched");
+        
+        setMatchedCards((prev) => [...prev, firstCard.id, card.id])
       } else {
         // Flipping back card 1 nd 2 after not matching
 
