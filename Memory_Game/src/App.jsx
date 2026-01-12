@@ -69,8 +69,20 @@ function App() {
       const firstCard = cards[flippedCards[0]];
 
       if (firstCard.value === card.value) {
+        setTimeout(() => {
+        setMatchedCards((prev) => [...prev, firstCard.id, card.id]);
         
-        setMatchedCards((prev) => [...prev, firstCard.id, card.id])
+        setCards ((prev) => 
+        prev.map((c) => {
+          if (c.id === card.id || c.id === firstCard.id) {
+            return {...c, isMatched: true}
+          } else {
+            return c;
+          }
+        })
+      )
+        setFlippedCards([])
+        }, 500)
       } else {
         // Flipping back card 1 nd 2 after not matching
 
@@ -82,11 +94,10 @@ function App() {
               return c;
             }
           });
-          setCards(flippedBackCards); 
+          setCards(flippedBackCards);
 
-          setFlippedCards([])
+          setFlippedCards([]);
         }, 1000);
-
       }
     }
   };
