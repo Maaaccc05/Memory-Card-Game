@@ -39,6 +39,10 @@ function App() {
     }));
 
     setCards(finalCards);
+    setMoves(0)
+    setScore(0)
+    setMatchedCards([])
+    setFlippedCards([])
   };
 
   useEffect(() => {
@@ -108,7 +112,7 @@ function App() {
 
   return (
     <div className="app">
-      <GameHeader score={score} moves={moves} />
+      <GameHeader score={score} moves={moves} onReset={initializeGame}/>
 
       <div className="cards-grid">
         {cards.map((card, index) => (
