@@ -27,6 +27,7 @@ function App() {
   const [matchedCards, setMatchedCards] = useState([]);
   const [moves, setMoves] = useState(0);
   const [score, setScore] = useState(0);
+  const [isLocked, setIsLocked] = useState(false)
 
   const initializeGame = () => {
     //Shuffle Cars
@@ -51,7 +52,7 @@ function App() {
 
   const handleCardClick = (card) => {
     // Can't click again if the card is already flipped
-    if (card.isFlipped || card.isMatched) {
+    if (card.isFlipped || card.isMatched  || isLocked || flippedCards.length === 2) {
       return;
     }
 
@@ -72,7 +73,9 @@ function App() {
     // Check for match if two cards are flipped
 
     if (flippedCards.length === 1) {
+      setIsLocked(true)
       const firstCard = cards[flippedCards[0]];
+
 
       if (firstCard.value === card.value) {
         setTimeout(() => {
@@ -88,6 +91,7 @@ function App() {
             })
           );
           setFlippedCards([]);
+          setIsLocked(false)
         }, 500);
       } else {
         // Flipping back card 1 nd 2 after not matching
@@ -103,6 +107,7 @@ function App() {
           setCards(flippedBackCards);
 
           setFlippedCards([]);
+          setIsLocked(false)
         }, 1000);
       }
 
